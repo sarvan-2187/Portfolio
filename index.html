@@ -587,6 +587,17 @@
                 height: 3rem;
             }
         }
+
+        .secondsection, .thirdsection, .fourthsection, .fifthsection, .sixthsection {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -908,5 +919,27 @@
     <footer>
         <p><b>&copy; Sarvan Kumar 2025. All Rights Reserved</b></p>
     </footer>
+    <script>
+        <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const sections = document.querySelectorAll('.secondsection, .thirdsection, .fourthsection, .fifthsection, .sixthsection');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+</script>
+    </script>
 </body>
 </html>
