@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-                :root {
+        :root {
             --primary-color: #00CED1;
             --background-color: #111827;
             --secondary-bg: rgba(103, 103, 103, 0.15);
@@ -104,23 +104,105 @@
             transform: translateY(-2px);
         }
 
-        .mobile-nav {
+        /* Hamburger Menu Styles */
+        .hamburger {
             display: none;
-            padding: 1rem 5%;
-            justify-content: space-around;
-            background-color: rgba(17, 24, 39, 0.8);
+            cursor: pointer;
+            width: 30px;
+            height: 22px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--primary-color);
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0px;
+        }
+
+        .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+            top: 9px;
+        }
+
+        .hamburger span:nth-child(4) {
+            top: 18px;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            top: 9px;
+            width: 0%;
+            left: 50%;
+        }
+
+        .hamburger.open span:nth-child(2) {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        .hamburger.open span:nth-child(4) {
+            top: 9px;
+            width: 0%;
+            left: 50%;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 24, 39, 0.95);
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s ease;
+            z-index: 1000;
+            border-bottom: 0 solid var(--primary-color);
+        }
+
+        .mobile-menu.open {
+            height: auto;
+            padding: 1rem 0;
             border-bottom: 1px solid var(--primary-color);
         }
 
-        .mobile-nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
         }
 
-        .mobile-nav a:hover {
+        .mobile-menu ul li {
+            margin: 1rem 0;
+        }
+
+        .mobile-menu ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .mobile-menu ul li a:hover {
             color: var(--accent-color);
+            transform: translateY(-2px);
         }
 
         .firstsection {
@@ -218,51 +300,6 @@
             height: 3px;
             background-color: var(--accent-color);
             border-radius: 3px;
-        }
-
-        .mobile-nav {
-            display: none;
-            padding: 0.8rem 5%;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.8rem;
-            background-color: rgba(17, 24, 39, 0.8);
-            border-bottom: 1px solid var(--primary-color);
-        }
-
-        .mobile-nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            font-size: 0.9rem;
-            padding: 0.3rem 0.6rem;
-        }
-
-        .mobile-nav a:hover {
-            color: var(--accent-color);
-        }
-
-        @media (max-width: 768px) {
-            .desktop-nav {
-                display: none;
-            }
-            
-            .mobile-nav {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .mobile-nav {
-                padding: 0.6rem 3%;
-                gap: 0.6rem;
-            }
-            
-            .mobile-nav a {
-                font-size: 0.8rem;
-                padding: 0.25rem 0.5rem;
-            }
         }
 
         @keyframes fadeIn {
@@ -437,23 +474,6 @@
             align-items: center;
         }
 
-        @media (max-width: 480px) {
-            .skills-columns {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .skill-item {
-                margin-bottom: 0.25rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .non-technical-skills ul {
-                columns: 1;
-            }
-        }
-
         .contact {
             max-width: 600px;
             margin: 0 auto;
@@ -526,6 +546,97 @@
         .quick-links a img:hover {
             transform: scale(1.2);
         }
+      
+       .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 22px;
+            position: relative;
+            z-index: 1001;
+            margin-right: 10px; /* Added more space for better tapping */
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--primary-color);
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0px;
+        }
+
+        .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+            top: 9px;
+        }
+
+        .hamburger span:nth-child(4) {
+            top: 18px;
+        }
+
+        /* FIXED: Made the transformations more dramatic for better visibility */
+        .hamburger.open span:nth-child(1) {
+            top: 9px;
+            width: 0%;
+            left: 50%;
+        }
+
+        .hamburger.open span:nth-child(2) {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        .hamburger.open span:nth-child(4) {
+            top: 9px;
+            width: 0%;
+            left: 50%;
+        }
+
+        .mobile-menu {
+            display: none; /* Initially hidden on desktop */
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 24, 39, 0.95);
+            max-height: 0; /* Start with zero height */
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            z-index: 1000;
+            border-bottom: 0 solid var(--primary-color);
+        }
+
+        .mobile-menu.open {
+            max-height: 320px; /* A fixed height that should contain all menu items */
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        /* Media query adjustments */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .mobile-menu {
+                display: block; /* Show on mobile but with zero height */
+            }
+        }
 
         @media (max-width: 992px) {
             .title {
@@ -542,8 +653,8 @@
                 display: none;
             }
             
-            .mobile-nav {
-                display: flex;
+            .hamburger {
+                display: block;
             }
             
             .firstsection {
@@ -586,6 +697,19 @@
                 width: 3rem;
                 height: 3rem;
             }
+            
+            .skills-columns {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .skill-item {
+                margin-bottom: 0.25rem;
+            }
+            
+            .non-technical-skills ul {
+                columns: 1;
+            }
         }
 
         .secondsection, .thirdsection, .fourthsection, .fifthsection, .sixthsection {
@@ -615,15 +739,23 @@
                     <li><a href="#resume">Resume</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
-        <div class="mobile-nav">
-            <a href="#about">About</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#projects">Projects</a>
-            <a href="#services">Services</a>
-            <a href="#resume">Resume</a>
-            <a href="#contact">Contact</a>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </header>
     
@@ -814,130 +946,151 @@
                 </div>
                 <div class="service">
                     <img src="Assets/Poster.png" alt="Poster Design">
-                    <h3>Poster Designing</h3>
+
+<img src="Assets/Poster.png" alt="Poster Design">
+                    <h3>Poster Design</h3>
                 </div>
                 <div class="service">
-                    <img src="Assets/Project.png" alt="Project Management">
-                    <h3>Version Control Systems</h3>
+                    <img src="Assets/Social.png" alt="Social Media Management">
+                    <h3>Social Media Management</h3>
                 </div>
             </div>
         </section>
         
-        <section class="fifthsection" id="resume">
+        <section class="sixthsection" id="resume">
             <div class="section-heading">
-                <h1>Resume & Skills</h1>
+                <h1>Skills & Resume</h1>
             </div>
-            <div class="wrapper">
-                <div class="service">
-                    <h3>My Resume</h3>
-                    <p style="text-align: left;">Download my resume to learn more about my experience and qualifications.
-                        It highlights my technical skills, projects, and achievements in the field of computer science.
-                        Whether you're a recruiter, collaborator, or curious tech enthusiast, you'll find a detailed snapshot of my journey so far.
-                        
-                        </p>
-                    <div class="button-container">
-                        <a href="Assets/Resume.pdf" download class="dwl-btn">Download Resume</a>
-                    </div>
+            <div class="service">
+                <h3>Technical Skills</h3>
+                <div class="skills">
+                    <img src="Assets/html.svg" alt="HTML">
+                    <img src="Assets/css.svg" alt="CSS">
+                    <img src="Assets/js.svg" alt="JavaScript">
+                    <img src="Assets/react.svg" alt="React">
+                    <img src="Assets/nextjs.svg" alt="Next.js">
+                    <img src="Assets/tailwind.svg" alt="Tailwind CSS">
+                    <img src="Assets/python.svg" alt="Python">
+                    <img src="Assets/java.svg" alt="Java">
+                    <img src="Assets/c.svg" alt="C">
+                    <img src="Assets/cpp.svg" alt="C++">
+                    <img src="Assets/git.svg" alt="Git">
                 </div>
-                <div class="service">
-                    <h3>Technical Skills</h3>
-                    <div class="skills">
-                        <img src="Assets/bootstrap-fill-svgrepo-com.svg" alt="Bootstrap" title="Bootstrap">
-                        <img src="Assets/css3-svgrepo-com.svg" alt="CSS" title="CSS">
-                        <img src="Assets/gitvs.svg" alt="Git" title="Git">
-                        <img src="Assets/html5-svgrepo-com.svg" alt="HTML" title="HTML">
-                        <img src="Assets/js01-svgrepo-com.svg" alt="JavaScript" title="JavaScript">
-                        <img src="Assets/node-svgrepo-com.svg" alt="Node.js" title="Node.js">
-                        <img src="Assets/react-javascript-js-framework-facebook-svgrepo-com.svg" alt="React" title="React">
-                        <img src="Assets/python-svgrepo-com.svg" alt="Python" title="Python">
-                        <img src="Assets/java-svgrepo-com.svg" alt="Java" title="Java">
-                    </div>
-                </div>
-                <div class="service">
+                <div class="non-technical-skills">
                     <h3>Non-Technical Skills</h3>
-                    <div class="non-technical-skills">
-                        <div class="skills-columns">
-                            <div class="skills-column">
-                                <div class="skill-item">
-                                    <span class="skill-bullet">•</span>
-                                    <span>Communication</span>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-bullet">•</span>
-                                    <span>Team Management</span>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-bullet">•</span>
-                                    <span>Problem Solving</span>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-bullet">•</span>
-                                    <span>Team Work</span>
-                                </div>
+                    <div class="skills-columns">
+                        <div class="skills-column">
+                            <div class="skill-item">
+                                <span class="skill-bullet">•</span>
+                                <span>Problem Solving</span>
                             </div>
-                            <div class="skills-column">
-                                <div class="skill-item">
-                                    <span class="skill-bullet">•</span>
-                                    <span>Leadership</span>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-bullet">•</span>
-                                    <span>Critical Thinking</span>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-bullet">•</span>
-                                    <span>Adaptability</span>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-bullet">•</span>
-                                    <span>Creativity</span>
-                                </div>
+                            <div class="skill-item">
+                                <span class="skill-bullet">•</span>
+                                <span>Critical Thinking</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-bullet">•</span>
+                                <span>Time Management</span>
+                            </div>
+                        </div>
+                        <div class="skills-column">
+                            <div class="skill-item">
+                                <span class="skill-bullet">•</span>
+                                <span>Team Collaboration</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-bullet">•</span>
+                                <span>Communication</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-bullet">•</span>
+                                <span>Adaptability</span>
+                            </div>
+                        </div>
+                        <div class="skills-column">
+                            <div class="skill-item">
+                                <span class="skill-bullet">•</span>
+                                <span>Creativity</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-bullet">•</span>
+                                <span>Leadership</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-bullet">•</span>
+                                <span>Public Speaking</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="resume">
+                <a href="Assets/Sarvan_Kumar_Resume.pdf" download class="dwl-btn">Download Resume</a>
+            </div>
         </section>
         
         <section class="sixthsection" id="contact">
             <div class="section-heading">
-                <h1>Contact Me</h1>
+                <h1>Contact</h1>
             </div>
-            <form action="https://api.web3forms.com/submit" method="post" class="contact">
-                <div class="contact-title"><h2>Get in Touch!</h2></div>
-                <input type="hidden" name="access_key" value="7af1432a-847c-4679-8b8f-e55d934beb1a">
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
-                <input type="email" name="email" placeholder="Your Email" class="contact-inputs" required>
-                <input type="tel" name="phone" placeholder="Your Phone Number" class="contact-inputs" required minlength="10">
-                <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
-                <button type="submit" class="contact-inputs">Send Message</button>
-            </form>
+            <div class="contact">
+                <div class="contact-title">
+                    <h2>Get In Touch</h2>
+                </div>
+                <form action="https://formspree.io/f/maygdvvr" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
+                    <input type="email" name="email" placeholder="Your Email" class="contact-inputs" required>
+                    <input type="text" name="subject" placeholder="Subject" class="contact-inputs" required>
+                    <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
+                    <button type="submit" class="contact-inputs">Send Message</button>
+                </form>
+            </div>
         </section>
     </main>
     
     <footer>
-        <p><b>&copy; Sarvan Kumar 2025. All Rights Reserved</b></p>
+        <p>&copy; 2025 Sarvan Kumar. All Rights Reserved.</p>
+        <div class="quick-links">
+            <a href="https://github.com/sarvan-2187" target="_blank"><img src="Assets/github.svg" alt="Github"></a>
+            <a href="https://www.linkedin.com/in/nagarampalli-sarvan-kumar-505b2531a" target="_blank"><img src="Assets/linkedin.svg" alt="Linkedin"></a>
+            <a href="mailto:sarvankumarnagarampalli478@gmail.com"><img src="Assets/gmail.svg" alt="Gmail"></a>
+        </div>
     </footer>
-        <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Close menu when clicking menu items
+        const mobileMenuItems = document.querySelectorAll('.mobile-menu ul li a');
+        
+        mobileMenuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+            });
+        });
+        
+        // Scroll animations
         const sections = document.querySelectorAll('.secondsection, .thirdsection, .fourthsection, .fifthsection, .sixthsection');
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
         
         sections.forEach(section => {
             observer.observe(section);
         });
-    });
-</script>
+    </script>
 </body>
 </html>
